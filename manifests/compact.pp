@@ -14,7 +14,7 @@ class thanos::compact(
   String  $http_address                            = "0.0.0.0:${http_port}",
   String  $data_dir                                = '/var/data/thanos-compact',
   Optional[String]  $gcs_bucket                    = undef,
-  String  $s3_bucket                               = 'prometheus',
+  Optional[String]  $s3_bucket                     = undef,
   Optional[String]  $s3_endpoint                   = undef,
   Optional[String]  $s3_access_key                 = undef,
   Optional[String]  $s3_secret_key                 = undef,

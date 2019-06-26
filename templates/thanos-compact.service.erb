@@ -14,9 +14,6 @@ ExecStart=/usr/bin/thanos compact \
 <%- if @data_dir -%>
   --data-dir=<%=@data_dir%> \
 <%- end -%>
-<%- if @sync_delay -%>
-  --sync-delay=<%=@sync_delay%> \
-<%- end -%>
 <%- if @wait -%>
   --wait \
 <%- end -%>
@@ -35,4 +32,3 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-

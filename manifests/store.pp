@@ -4,23 +4,23 @@
 #
 # @summary A short summary of the purpose of this class
 #
-# @param $log_level           [String] Optional      
+# @param $log_level           [String] Optional
 #   Log filtering level.
 # @param $gcloudtrace_project [String] Optional
-#   GCP project to send Google Cloud Trace tracings to. 
+#   GCP project to send Google Cloud Trace tracings to.
 #   If empty, tracing will be disabled.
 # @param $gcloudtrace_sample_factor [String] Optional
-#   How often we send traces (1/<sample_factor>).  
-#   If 0 no trace will be sent periodically, unless forced by baggage item. 
+#   How often we send traces (1/<sample_factor>).
+#   If 0 no trace will be sent periodically, unless forced by baggage item.
 #   See `pkg/tracing/tracing.go` for details.
 # @param $grpc_port [String] Required
 #   Listen port for gRPC endpoints (StoreAPI).
 # @oaram $grpc_address [String] Required
-#   Listen ip address for gRPC endpoints (StoreAPI). 
-#   Make sure this address is routable from other components if you use gossip, 
+#   Listen ip address for gRPC endpoints (StoreAPI).
+#   Make sure this address is routable from other components if you use gossip,
 #   'grpc_advertise_address' is empty and you require cross_node connection.
 # @param $grpc_advertise_address [String] optional
-#   Explicit (external) host:port address to advertise for gRPC StoreAPI in gossip cluster. 
+#   Explicit (external) host:port address to advertise for gRPC StoreAPI in gossip cluster.
 #   If empty, 'grpc_address' will be used.
 # @param $http_port [String] Required
 #   Listen port for HTTP endpoints.
@@ -31,23 +31,23 @@
 # @oaram $cluster_address [String] optional
 #   Listen ip address for gossip cluster.
 # @param $cluster_advertise_address [String]
-#   Explicit (external) ip:port address to advertise for gossip in gossip cluster. 
+#   Explicit (external) ip:port address to advertise for gossip in gossip cluster.
 #   Used internally for membership only
 # @param $cluster_peers [Array][String] required
-#   Initial peers to join the cluster. It can be either <ip:port>, or <domain:port>. 
+#   Initial peers to join the cluster. It can be either <ip:port>, or <domain:port>.
 #   A lookup resolution is done only at the startup.
 # @param $cluster_gossip_interval [String] optional
-#   Interval between sending gossip messages. 
-#   By lowering this value (more frequent) gossip messages are propagated across 
+#   Interval between sending gossip messages.
+#   By lowering this value (more frequent) gossip messages are propagated across
 #   the cluster more quickly at the expense of increased bandwidth.
 # @param $cluster_pushpull_interval [String] optional
 #   Interval for gossip state syncs. Setting this interval lower (more frequent)
-#   will increase convergence speeds across larger clusters at the expense of 
+#   will increase convergence speeds across larger clusters at the expense of
 #   increased bandwidth usage.
 # @param $data_dir [String] optional
 #   Data directory.
 # @param $gcs_bucket [String] optional
-#   Google Cloud Storage bucket name for stored blocks. 
+#   Google Cloud Storage bucket name for stored blocks.
 #   If empty sidecar won't store any block inside Google Cloud Storage.
 # @param $s3_bucket [String]
 #   S3_Compatible API bucket name for stored blocks.
@@ -61,7 +61,7 @@
 #   Whether to use S3 Signature Version 2; otherwise Signature Version 4 will be used.
 # @param $s3_encrypt_sse [String] optional
 #   Whether to use Server Side Encryption
-# @param $index_cache_size [String] optional 
+# @param $index_cache_size [String] optional
 #   Maximum size of items held in the index cache.
 #   Default: 250MB
 # @param $chunk_pool_size [String] optional
@@ -90,7 +90,7 @@ class thanos::store (
     String  $cluster_network_type                 = 'wan',
     String  $data_dir                            = '/var/lib/thanos/store',
     Optional[String]  $gcs_bucket                 = undef,
-    String  $s3_bucket                            = 'prometheus',
+    Optional[String]  $s3_bucket                  = undef,
     Optional[String]  $s3_endpoint                = undef,
     Optional[String]  $s3_access_key              = undef,
     Optional[String]  $s3_secret_key              = undef,
