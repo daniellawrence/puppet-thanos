@@ -1,24 +1,5 @@
 ---
-<%- if @s3_bucket -%>
-type: S3
-config:
-    bucket: <%=@s3_bucket%>
-    endpoint: <%=@s3_endpoint%>
-    access_key: <%=@s3_access_key%>
-    <%- if @s3_insecure -%>
-    insecure: true
-    <%- end -%>
-    <%- if @s3_signature_version2 -%>
-    signature_version2: true
-    <%- end -%>
-    <%- if @s3_encrypt_sse -%>
-    encrypt_sse: true
-    <%- end -%>
-    secret_key: <%=@s3_secret_key%>
-<%- end -%>
-<%- if @gcs_bucket -%>
 type: GCS
 config:
   bucket: <%= @gcs_bucket %>
   service_account: <%= @gcs_service_account %>
-<%- endif -%>
