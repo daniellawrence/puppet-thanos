@@ -1,4 +1,3 @@
-
 # thanos
 [![Build Status](https://travis-ci.org/jdfalk/puppet-thanos.svg?branch=master)](https://travis-ci.org/jdfalk/puppet-thanos)
 
